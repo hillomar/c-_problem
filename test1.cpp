@@ -1,44 +1,41 @@
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
-void math(float array[],int size,float speed[]){
-    int d = 0;
-    speed[d] = 1;
-    d+=1;
-    for(int i = 0;i<size-1;i++){
-        speed[d] = float((array[i]/array[i+1])*speed[d-1]);
-        d+=1;
-    }
-}
-int check(float speed[],int size){
-    int ok = 0;
-    for(int i = 0;i<size-1;i++){
-        for(int j = i+1;j<size;j++){
-            if(speed[i]==speed[j]){
-                ok+=1;
-            }
+int check(int array[],int pos,int change){
+    int yes = 0;
+    for(int i = 0;i<pos;i++){
+        if(array[i]<=array[pos]){
+            yes+=1;
+            change = i;
         }
     }
-    if(ok>0){
-        return 1;
-    }
-    else{
-        return 0;
-    }
+    return yes;
 }
+
 int main(){
-    int t;
-    cin>>t;
-    while(t--){
-        int n;
-        cin>>n;
-        float array[n];
-        float speed[n];
-        for(int i = 0;i<n;i++){
-            cin>>array[i];
+    int change = 0;
+    int n;
+    cin>>n;
+    int height[n];
+    int con[n];
+    for(int i = 0;i<n;i++){
+        cin>>height[i];
+    }
+    for(int i = 0;i<n;i++){
+        cin>>con[i];
+    }
+    
+    int temp = 0;
+    for(int i = 0;i<n;i++){
+        int ok = check(height,i,change);
+        if(ok!=con[i]){
+            temp = height[change];
+            height[change] = height[i];
+            height[i] = temp; 
         }
-        math(array,n,speed);
-        //result
-        (check(speed,n)==1) ? cout<<"YES"<<'\n' : cout<<"NO"<<'\n';
+    }
+    for(int i = 0;i<n;i++){
+        cout<<height[i]<<'\n';
     }
 }
