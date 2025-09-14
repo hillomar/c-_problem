@@ -19,7 +19,7 @@ int main(){
     //to delete any key with its value
     my_dictionary.erase("Apple");
     //to clear the whole map
-    //my_dictionary.clear();f
+    //my_dictionary.clear();
     
 
     for(auto pair : my_dictionary){
