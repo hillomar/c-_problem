@@ -1,39 +1,48 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-
-    int T;
-    cin >> T;
-    while (T--) {
-        string s;
-        cin >> s;
-        int n = s.size();
-
-        int cnt0 = 0, cnt1 = 0;
-        for (char c : s) {
-            if (c == '0') cnt0++;
-            else cnt1++;
-        }
-
-        int used = 0;
-        for (int i = 0; i < n; i++) {
-            int want = (s[i] == '0' ? 1 : 0); // need the opposite
-            if (want == 0 && cnt0 > 0) {
-                cnt0--;
-                used++;
-            } else if (want == 1 && cnt1 > 0) {
-                cnt1--;
-                used++;
-            } else {
-                break; // can't continue
-            }
-        }
-
-        cout << (n - used) << "\n";
+void calculation(float meal,float joma,float &pabe,float &pabo,float khori,int &pacce,int &dicce,float &total_khoroch){
+    float total = (meal*83.6)+250+khori;
+    total_khoroch+=total;
+    if(total>=joma){
+        pabo+=total-joma;
+        dicce+=1;
     }
+    else{
+        pabe+=joma-total;
+        pacce+=1;
+    }
+}
 
-    return 0;
+int main() {
+    float bordar = 40;
+    float pabe = 0;
+    float pabo = 0;
+    float khori = 220;
+    int com_dicce = 0;
+    int pacce = 0;
+    int dicce = 0;
+    int total_joma = 0;
+    float total_khoroch = 0;
+    float total_meal = 0;
+    while(bordar--){
+        float meal,joma;
+        cin>>meal>>joma;
+        total_meal+=meal;
+        total_joma+=joma;
+        if(meal<11){
+            khori = 120;
+            com_dicce+=1;
+        }
+        else{
+            khori = 220;
+        }
+        calculation(meal,joma,pabe,pabo,khori,pacce,dicce,total_khoroch);
+    }
+    cout<<"Total meal: "<<total_meal<<'\n';
+    cout<<"Total joma: "<<total_joma<<'\n';
+    cout<<"Total khoroch: "<<total_khoroch<<'\n';
+    cout<<"khorir taka kom dicce: "<<com_dicce<<'\n';
+    cout<<"Pabe: "<<pabe<<" Pacce: "<<pacce<<'\n';
+    cout<<"Pabo: "<<pabo<<" Dicce: "<<dicce<<'\n';
 }
