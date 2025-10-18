@@ -1,36 +1,25 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-int main(){
-    char a;
-    int n;
-    vector<int> vec;
-    int d = 0;
-    while(1){
-        if(d%2==0){
-            cin>>a;
-            if(a==']'){
-                break;
-            }
-            d+=1;
-        }
-        else{
-            cin>>n;
-            vec.push_back(n);
-            d+=1;
-        }
-    }
+
+class Solution{
+    public:
+    vector<int> a;
     int target;
-    cin>>target;
-    //check
-    int size = vec.size();
-    for(int i = 0;i<size-1;i++){
-        for(int j = i+1;j<size;j++){
-            if(vec[i]+vec[j]==target){
-                cout<<'['<<i<<','<<j<<']'<<'\n';
-                break;
+    void check(vector<int> a,int target,int &b,int &c){
+        for(int i = 0;i<a.size()-1;i++){
+            for(int j = i+1;j<a.size();j++){
+                if(a[i]+a[j]==target){
+                    b = i; c = j;
+                    break;
+                }
             }
         }
     }
-    return 0;
+};
+
+int main(){
+    int *b;
+    int *c;
+    
 }
