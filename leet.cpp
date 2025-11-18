@@ -2,24 +2,29 @@
 #include <vector>
 using namespace std;
 
-class Solution{
-    public:
-    vector<int> a;
-    int target;
-    void check(vector<int> a,int target,int &b,int &c){
-        for(int i = 0;i<a.size()-1;i++){
-            for(int j = i+1;j<a.size();j++){
-                if(a[i]+a[j]==target){
-                    b = i; c = j;
-                    break;
-                }
-            }
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        int y = 0;
+        int d = 1;
+        while(x>0){
+            y += (x%10)*d;
+            x/=10;
+            d*=10;
+        }
+        if(x==y){
+            return true;
+        }
+        else{
+            return false;
         }
     }
 };
 
 int main(){
-    int *b;
-    int *c;
-    
+    Solution s1;
+    int x;
+    cin>>x;
+    cout<<s1.isPalindrome(x);
+
 }

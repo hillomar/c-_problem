@@ -47,5 +47,8 @@ int main(){
     number.insert(number.begin()+5,88);
     number.erase(number.begin()+5);
     number.pop_back();
+    for(auto it = number.cbegin();it!=number.cend();it++){
+        cout<<*it<<'\n';
+    }
     
 }
