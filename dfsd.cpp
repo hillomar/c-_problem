@@ -41,5 +41,4 @@ int main(){
         final=final*(-1);
     }
     cout<<final<<'\n';
-
 }
