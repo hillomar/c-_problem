@@ -1,19 +1,27 @@
-#include<bits/stdc++.h>
+#include <iostream>
 using namespace std;
-#define ll long long 
-const int M=10e+7;
-#define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
-
-
-
 int main(){
-optimize()
- int n;
- cin>>n;
-
- 
- 
-
-
-   
+    int n;
+    cin>>n;
+    int ar[n];
+    for(int i = 0;i<n;i++){
+        cin>>ar[i];
+    }
+    int x;
+    cin>>x;
+    int check = 0;
+    int index = 0;
+    for(int i = 0;i<n;i++){
+        if(x==ar[i]){
+            index = i;
+            check+=1;
+            break;
+        }
+    }
+    if(check==0){
+        cout<<-1<<'\n';
+    }
+    else{
+        cout<<index<<'\n';
+    }
 }
